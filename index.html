@@ -3,36 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Student Entry Form</title>
+    <title>Google Form Style - Student Entry</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="form-container">
-        <h2>Form</h2>
-        <form id="studentForm" class="creative-form">
+        <h2>Student Entry Form</h2>
+        <form id="studentForm" class="google-form-style">
+            <!-- Name Field -->
             <div class="form-group">
+                <label for="name">Name</label>
                 <input type="text" id="name" placeholder="Name" required>
             </div>
+            
+            <!-- Email Field -->
             <div class="form-group">
-                <input type="email" id="email" placeholder=" Email" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Email" required>
             </div>
+            
+            <!-- Student ID Field -->
             <div class="form-group">
+                <label for="studentId">Student ID</label>
                 <input type="text" id="studentId" placeholder="Student ID" required>
             </div>
+            
+            <!-- College Name Field -->
             <div class="form-group">
+                <label for="college">College Name</label>
                 <input type="text" id="college" placeholder="College Name" required>
             </div>
+            
+            <!-- Subject Field -->
             <div class="form-group">
-                <input type="text" id="subject" placeholder="Subject" required>
+                <label for="subject">Subject</label>
+                <select id="subject" required>
+                    <option value="" disabled selected>Select Subject</option>
+                    <option value="Computer Science">Computer Science</option>
+                    <option value="Biology">Biology</option>
+                    <option value="Mathematics">Mathematics</option>
+                    <option value="English">English</option>
+                    <option value="Physics">Physics</option>
+                </select>
             </div>
+            
+            <!-- Marks Type Field -->
             <div class="form-group">
+                <label for="marksType">Marks Type</label>
                 <select id="marksType" required>
                     <option value="percentage">Percentage</option>
                     <option value="cgpa">CGPA</option>
                 </select>
             </div>
+
+            <!-- Marks Field -->
             <div class="form-group">
-                <input type="number" id="marks" placeholder="Enter Marks" step="0.01" required>
+                <label for="marks">Marks</label>
+                <input type="number" id="marks" placeholder="Enter your marks" step="0.01" required>
             </div>
 
             <!-- Buttons Section -->
@@ -42,7 +69,7 @@
             </div>
         </form>
 
-        <!-- Display of student data within the form container -->
+        <!-- Display Student Data in the form container -->
         <div id="studentDisplay" class="student-display"></div>
     </div>
 

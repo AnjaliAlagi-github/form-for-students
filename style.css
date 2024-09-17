@@ -1,7 +1,6 @@
 body {
     font-family: 'Arial', sans-serif;
-    background-color: #f4f4f4;
-    padding: 20px;
+    background-color: #f0f0f0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -10,34 +9,43 @@ body {
 }
 
 .form-container {
-    width: 400px;
-    padding: 20px;
     background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
 }
 
 h2 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 1.5rem;
     color: #333;
 }
 
-.creative-form .form-group {
-    margin-bottom: 15px;
+.google-form-style .form-group {
+    margin-bottom: 1rem;
 }
 
-.creative-form input, .creative-form select {
+.google-form-style label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.google-form-style input, .google-form-style select {
     width: 100%;
-    padding: 10px;
+    padding: 0.75rem;
     border: 1px solid #ddd;
     border-radius: 4px;
-    font-size: 16px;
-    transition: border 0.3s;
+    font-size: 1rem;
+    outline: none;
+    box-sizing: border-box;
+    background-color: #f8f8f8;
 }
 
-.creative-form input:focus, .creative-form select:focus {
-    border-color: #007bff;
+.google-form-style input:focus, .google-form-style select:focus {
+    border-color: #4285f4;
 }
 
 .form-buttons {
@@ -46,45 +54,59 @@ h2 {
 }
 
 .submit-btn, .clear-btn {
-    padding: 10px;
-    font-size: 16px;
+    background-color: #4285f4;
+    color: white;
     border: none;
-    border-radius: 5px;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
     cursor: pointer;
-    width: 48%;
+    font-size: 1rem;
 }
 
-.submit-btn {
-    background-color:Blue;
-    color: white;
+.submit-btn:hover, .clear-btn:hover {
+    background-color: #357ae8;
 }
 
 .clear-btn {
     background-color: red;
-    color: white;
 }
 
-/* Student data display styles */
+.clear-btn:hover {
+    background-color: #d32f2f;
+}
+
 .student-display {
-    margin-top: 20px;
-    padding: 15px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-    display: none;
+    margin-top: 2rem;
+    border-top: 1px solid #ddd;
+    padding-top: 1rem;
 }
 
-.student-display p {
-    margin: 5px 0;
-}
-
-.edit-btn {
-    margin-top: 10px;
-    padding: 8px;
-    background-color: blue;
-    color: white;
-    border: none;
+.student-item {
+    background-color: #f8f8f8;
+    padding: 1rem;
     border-radius: 4px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.student-item p {
+    margin: 0.5rem 0;
+}
+
+.edit-btn, .delete-btn {
+    background-color:Blue;
+    border: none;
+    padding: 0.5rem 1rem;
     cursor: pointer;
-    width: 100%;
-    text-align: center;
+    margin-right: 0.5rem;
+}
+
+.edit-btn:hover {
+    background-color: #4285f4;
+    color: white;
+}
+
+.delete-btn:hover {
+    background-color: #f44336;
+    color: white;
 }

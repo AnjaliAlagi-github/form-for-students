@@ -3,10 +3,10 @@ const submitBtn = document.getElementById("submitBtn");
 const clearBtn = document.getElementById("clearBtn");
 const studentDisplay = document.getElementById("studentDisplay");
 
-let studentData = {};
-let isEditMode = false;
+let studentData = [];
+let editIndex = null;
 
-// Function to handle form submission
+// Handle form submission (Create or Update)
 function handleSubmit() {
     const name = document.getElementById("name").value;
     const email = document.getElementById("email").value;
@@ -21,57 +21,77 @@ function handleSubmit() {
         return;
     }
 
-    // Store the data in studentData object
-    studentData = { name, email, studentId, college, subject, marksType, marks };
+    const studentObj = { name, email, studentId, college, subject, marksType, marks };
 
-    // Display student data creatively in the form container
+    // If we're editing an existing entry, update it
+    if (editIndex !== null) {
+        studentData[editIndex] = studentObj;
+        submitBtn.textContent = "Submit"; // Change button back to "Submit"
+        editIndex = null;
+    } else {
+        // If it's a new entry, add to the array
+        studentData.push(studentObj);
+    }
+
+    // Clear form fields after submission
+    clearForm();
+    // Display the updated data
     displayStudentData();
-
-    // After submitting, switch button to "Edit" mode
-    submitBtn.textContent = "Edit";
-    isEditMode = true;
 }
 
-// Function to display student data within the form container
+// Display student data with Edit and Delete options
 function displayStudentData() {
-    studentDisplay.innerHTML = `
-        <p><strong>Name:</strong> ${studentData.name}</p>
-        <p><strong>Email:</strong> ${studentData.email}</p>
-        <p><strong>Student ID:</strong> ${studentData.studentId}</p>
-        <p><strong>College:</strong> ${studentData.college}</p>
-        <p><strong>Subject:</strong> ${studentData.subject}</p>
-        <p><strong>Marks Type:</strong> ${studentData.marksType}</p>
-        <p><strong>Marks:</strong> ${studentData.marks}</p>
-        <button class="edit-btn" onclick="editStudent()">Edit Details</button>
-    `;
-    studentDisplay.style.display = "block";
+    studentDisplay.innerHTML = ''; // Clear the display area
+
+    studentData.forEach((student, index) => {
+        const studentElement = `
+            <div class="student-item">
+                <p><strong>Name:</strong> ${student.name}</p>
+                <p><strong>Email:</strong> ${student.email}</p>
+                <p><strong>Student ID:</strong> ${student.studentId}</p>
+                <p><strong>College:</strong> ${student.college}</p>
+                <p><strong>Subject:</strong> ${student.subject}</p>
+                <p><strong>Marks Type:</strong> ${student.marksType}</p>
+                <p><strong>Marks:</strong> ${student.marks}</p>
+                <button class="edit-btn" onclick="editStudent(${index})">Edit</button>
+                <button class="delete-btn" onclick="deleteStudent(${index})">Delete</button>
+            </div>
+        `;
+        studentDisplay.innerHTML += studentElement;
+    });
+
+    studentDisplay.style.display = studentData.length ? "block" : "none";
 }
 
-// Function to edit student data (loads into form for editing)
-function editStudent() {
-    document.getElementById("name").value = studentData.name;
-    document.getElementById("email").value = studentData.email;
-    document.getElementById("studentId").value = studentData.studentId;
-    document.getElementById("college").value = studentData.college;
-    document.getElementById("subject").value = studentData.subject;
-    document.getElementById("marksType").value = studentData.marksType;
-    document.getElementById("marks").value = studentData.marks;
-    
-    // Switch back to submit mode
-    submitBtn.textContent = "Submit";
-    isEditMode = false;
+// Edit student data (populate the form with existing data)
+function editStudent(index) {
+    const student = studentData[index];
 
-    studentDisplay.style.display = "none";
+    document.getElementById("name").value = student.name;
+    document.getElementById("email").value = student.email;
+    document.getElementById("studentId").value = student.studentId;
+    document.getElementById("college").value = student.college;
+    document.getElementById("subject").value = student.subject;
+    document.getElementById("marksType").value = student.marksType;
+    document.getElementById("marks").value = student.marks;
+
+    submitBtn.textContent = "Update"; // Change button to "Update"
+    editIndex = index; // Set the current index for editing
 }
 
-// Clear the form fields
+// Delete student data
+function deleteStudent(index) {
+    studentData.splice(index, 1); // Remove the student from the array
+    displayStudentData(); // Re-render the list of students
+}
+
+// Clear form fields
 function clearForm() {
     studentForm.reset();
-    submitBtn.textContent = "Submit";
-    isEditMode = false;
-    studentDisplay.style.display = "none";
+    submitBtn.textContent = "Submit"; // Reset button text to "Submit"
+    editIndex = null; // Reset edit index
 }
 
-// Event listeners for submit and clear buttons
+// Event listeners for buttons
 submitBtn.addEventListener("click", handleSubmit);
 clearBtn.addEventListener("click", clearForm);
