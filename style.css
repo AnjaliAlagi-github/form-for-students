@@ -95,6 +95,7 @@ h2 {
 
 .edit-btn, .delete-btn {
     background-color:Blue;
+    color:white;
     border: none;
     padding: 0.5rem 1rem;
     cursor: pointer;
