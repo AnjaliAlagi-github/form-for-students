@@ -16,6 +16,7 @@ function handleSubmit() {
     const marksType = document.getElementById("marksType").value;
     const marks = document.getElementById("marks").value;
 
+    // Validate form input
     if (!name || !email || !studentId || !college || !subject || !marks) {
         alert("Please fill out all fields.");
         return;
@@ -23,25 +24,34 @@ function handleSubmit() {
 
     const studentObj = { name, email, studentId, college, subject, marksType, marks };
 
-    // If we're editing an existing entry, update it
+    // If editing, update the existing entry
     if (editIndex !== null) {
         studentData[editIndex] = studentObj;
-        submitBtn.textContent = "Submit"; // Change button back to "Submit"
+        submitBtn.textContent = "Submit"; // Revert button text
         editIndex = null;
+        alert('Student data updated successfully!');
     } else {
-        // If it's a new entry, add to the array
+        // Add new student data
         studentData.push(studentObj);
+        alert('Student data added successfully!');
     }
 
     // Clear form fields after submission
     clearForm();
-    // Display the updated data
+    // Display the updated data with Edit and Delete options
     displayStudentData();
 }
 
 // Display student data with Edit and Delete options
 function displayStudentData() {
     studentDisplay.innerHTML = ''; // Clear the display area
+
+    // Check if there is any data to display
+    if (studentData.length === 0) {
+        studentDisplay.style.display = "none"; // Hide if no data
+    } else {
+        studentDisplay.style.display = "block"; // Show if there is data
+    }
 
     studentData.forEach((student, index) => {
         const studentElement = `
@@ -59,14 +69,13 @@ function displayStudentData() {
         `;
         studentDisplay.innerHTML += studentElement;
     });
-
-    studentDisplay.style.display = studentData.length ? "block" : "none";
 }
 
 // Edit student data (populate the form with existing data)
 function editStudent(index) {
     const student = studentData[index];
 
+    // Populate the form with the existing student data
     document.getElementById("name").value = student.name;
     document.getElementById("email").value = student.email;
     document.getElementById("studentId").value = student.studentId;
@@ -81,8 +90,10 @@ function editStudent(index) {
 
 // Delete student data
 function deleteStudent(index) {
-    studentData.splice(index, 1); // Remove the student from the array
-    displayStudentData(); // Re-render the list of students
+    if (confirm("Are you sure you want to delete this student data?")) {
+        studentData.splice(index, 1); // Remove the student from the array
+        displayStudentData(); // Re-render the list of students
+    }
 }
 
 // Clear form fields

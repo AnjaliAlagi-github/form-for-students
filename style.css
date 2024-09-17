@@ -1,51 +1,48 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    margin: 0;
 }
 
 .form-container {
     background-color: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
     width: 100%;
-    max-width: 500px;
 }
 
 h2 {
     text-align: center;
-    margin-bottom: 1.5rem;
-    color: #333;
+    margin-bottom: 20px;
+    font-size: 24px;
 }
 
-.google-form-style .form-group {
-    margin-bottom: 1rem;
+.form-group {
+    margin-bottom: 15px;
 }
 
-.google-form-style label {
+label {
     display: block;
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    margin-bottom: 5px;
 }
 
-.google-form-style input, .google-form-style select {
+input, select {
     width: 100%;
-    padding: 0.75rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    font-size: 1rem;
-    outline: none;
-    box-sizing: border-box;
-    background-color: #f8f8f8;
-}
-
-.google-form-style input:focus, .google-form-style select:focus {
-    border-color: #4285f4;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
 }
 
 .form-buttons {
@@ -54,60 +51,54 @@ h2 {
 }
 
 .submit-btn, .clear-btn {
-    background-color: #4285f4;
-    color: white;
+    padding: 10px 15px;
     border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
+    background-color: #4CAF50;
+    color: white;
     cursor: pointer;
-    font-size: 1rem;
-}
-
-.submit-btn:hover, .clear-btn:hover {
-    background-color: #357ae8;
+    border-radius: 5px;
 }
 
 .clear-btn {
-    background-color: red;
-}
-
-.clear-btn:hover {
-    background-color: #d32f2f;
+    background-color: #f44336;
 }
 
 .student-display {
-    margin-top: 2rem;
-    border-top: 1px solid #ddd;
-    padding-top: 1rem;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fafafa;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: none;
 }
 
 .student-item {
-    background-color: #f8f8f8;
-    padding: 1rem;
-    border-radius: 4px;
-    margin-bottom: 1rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.student-item:last-child {
+    border-bottom: none;
 }
 
 .student-item p {
-    margin: 0.5rem 0;
+    margin: 5px 0;
 }
 
-.edit-btn, .delete-btn {
-    background-color:Blue;
-    color:white;
+button.edit-btn, button.delete-btn {
+    padding: 5px 10px;
     border: none;
-    padding: 0.5rem 1rem;
+    background-color: #2196F3;
+    color: white;
     cursor: pointer;
-    margin-right: 0.5rem;
+    border-radius: 3px;
+    margin-right: 10px;
 }
 
-.edit-btn:hover {
-    background-color: #4285f4;
-    color: white;
-}
-
-.delete-btn:hover {
+button.delete-btn {
     background-color: #f44336;
-    color: white;
+}
+
+button.edit-btn:hover, button.delete-btn:hover {
+    opacity: 0.8;
 }

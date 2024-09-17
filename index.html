@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Entry Form</title>
+    <title>Google Form Style - Student Entry</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -15,21 +15,25 @@
                 <label for="name">Name</label>
                 <input type="text" id="name" placeholder="Name" required>
             </div>
-            
-           
-            
+
+            <!-- Email Field -->
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Email" required>
+            </div>
+
             <!-- Student ID Field -->
             <div class="form-group">
                 <label for="studentId">Student ID</label>
                 <input type="text" id="studentId" placeholder="Student ID" required>
             </div>
-            
+
             <!-- College Name Field -->
             <div class="form-group">
                 <label for="college">College Name</label>
                 <input type="text" id="college" placeholder="College Name" required>
             </div>
-            
+
             <!-- Subject Field -->
             <div class="form-group">
                 <label for="subject">Subject</label>
@@ -42,7 +46,7 @@
                     <option value="Physics">Physics</option>
                 </select>
             </div>
-            
+
             <!-- Marks Type Field -->
             <div class="form-group">
                 <label for="marksType">Marks Type</label>
@@ -65,7 +69,7 @@
             </div>
         </form>
 
-        <!-- Display Student Data in the form container -->
+        <!-- Display Student Data -->
         <div id="studentDisplay" class="student-display"></div>
     </div>
 
